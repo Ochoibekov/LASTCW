@@ -26,8 +26,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :active %>
-    <%= f.check_box :active %>
+
+    <%= f.hidden_field :active %>
+  </div>
+  <div>
+    <%= f.file_field :image %>
   </div>
     <%= f.hidden_field :user_id, value: current_user.id %>
 

@@ -1,0 +1,1 @@
+json.array! @orgcomments, partial: 'orgcomments/orgcomment', as: :orgcomment

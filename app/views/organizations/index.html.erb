@@ -1,32 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Organizations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Active</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+
+
+<div class="container">
+  <div class="new_organization col-md-12">
+    <%= will_paginate @organizations %>
+
     <% @organizations.each do |organization| %>
-      <tr>
-        <td><%= organization.title %></td>
-        <td><%= organization.description %></td>
-        <td><%= organization.active %></td>
-        <td><%= link_to 'Show', organization %></td>
-        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <div class="col-md-4">
+          <h4><%= link_to organization.title, organization %></h4>
+          <ul>
+            <li><%= 'Описание' %>: <%= organization.description %></li>
+            <li><%= 'Категория' %>: <%= organization.category.title %></li>
+            <li><%= image_tag organization.image.url(:thumb) %></li>
+            <li>Обслуживание  : <%= rating_for organization, 'speed', star: 5 %></li>
+            <li>Качество : <%= rating_for organization, 'engine', star: 5 %></li>
+            <li>Цена  : <%= rating_for organization, 'price', star: 5 %></li>
+          </ul>
+        </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-<% if user_signed_in? %>
-<%= link_to 'New Organization', new_organization_path %>
-<% end %>
+  </div>
+  <br>
+  <br>
+  <% if user_signed_in? %>
+      <%= link_to 'Create New Organization', new_organization_path %>
+  <% end %>
+
+</div>
+
+
+

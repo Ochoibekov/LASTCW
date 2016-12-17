@@ -4,12 +4,17 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    @organizations = Organization.paginate(:page => params[:page], :per_page => 20).order('id DESC').where(active: true)
   end
 
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+  end
+
+  def search
+    @organizations = Organization.search(params[:query],page: params[:page], per_page: 10)
+    render 'organization/index'
   end
 
   # GET /organizations/new
@@ -69,6 +74,6 @@ class OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params.require(:organization).permit(:title, :description, :active,:category_id,:user_id)
+      params.require(:organization).permit(:title, :description, :active,:category_id,:user_id,:image,:active)
     end
 end

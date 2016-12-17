@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orgcomments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orgcomments.each do |orgcomment| %>
+      <tr>
+        <td><%= orgcomment.title %></td>
+        <td><%= link_to 'Show', orgcomment %></td>
+        <td><%= link_to 'Edit', edit_orgcomment_path(orgcomment) %></td>
+        <td><%= link_to 'Destroy', orgcomment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Orgcomment', new_orgcomment_path %>

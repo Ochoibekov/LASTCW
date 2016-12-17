@@ -1,0 +1,1 @@
+json.partial! "orgcomments/orgcomment", orgcomment: @orgcomment

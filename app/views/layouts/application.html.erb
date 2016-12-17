@@ -9,6 +9,13 @@
   </head>
 
   <body>
+  <div class="all">
+    <%= render 'layouts/header' %>
+    <% flash.each do |type, message| %>
+        <%= content_tag :div, message, class: "alert alert-#{type}" %>
+    <% end %>
     <%= yield %>
+  </div>
+
   </body>
 </html>

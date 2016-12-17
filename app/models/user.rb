@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence: true, length: {maximum: 50}
   has_many :organizations
+  has_many :orgcomments
   ratyrate_rater
 
   has_attached_file :image,

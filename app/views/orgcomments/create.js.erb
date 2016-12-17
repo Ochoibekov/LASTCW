@@ -1,0 +1,2 @@
+$('#comments_<%= @organization.id %>').append("<%=j render 'orgcomments/orgcomment', organization: @organization, orgcomment: @orgcomment %>");
+$('#comment_content_<%= @organization.id %>').val('')

@@ -9,12 +9,21 @@
   <strong>Description:</strong>
   <%= @organization.description %>
 </p>
-
+<p>Comments: <%= render @organization.orgcomments %></p
 <li><%= image_tag @organization.image.url(:thumb) %></li>
 <li><%= rating_for @organization, 'speed', disable_after_rate: true %></li>
 <li><%= rating_for @organization, 'engine', disable_after_rate: true %></li>
 <li><%= rating_for @organization, 'price', disable_after_rate: true %></li>
+
+<div class="comment-form col-sm-11">
+  <%= form_for([@organization, @organization.orgcomments.build], remote: true) do |f| %>
+
+      <%= f.text_field :title, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{@organization.id}",remote: true%>
+  <% end %>
+</div>
+<% if user_signed_in? %>
 <% if current_user.id == @organization.user_id %>
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
+<% end %>
 <% end %>

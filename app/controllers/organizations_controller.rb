@@ -12,10 +12,7 @@ class OrganizationsController < ApplicationController
   def show
   end
 
-  def search
-    @organizations = Organization.search(params[:query],page: params[:page], per_page: 10)
-    render 'organization/index'
-  end
+
 
   # GET /organizations/new
   def new
@@ -74,6 +71,6 @@ class OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params.require(:organization).permit(:title, :description, :active,:category_id,:user_id,:image,:active)
+      params.require(:organization).permit(:title, :description, :active,:category_id,:user_id,:image,:active,:orgcomment_id)
     end
 end

@@ -14,6 +14,7 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'paperclip'
 gem 'will_paginate', '~> 3.1.0'
 gem 'ratyrate'
+gem 'faker'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

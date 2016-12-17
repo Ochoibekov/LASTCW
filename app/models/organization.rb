@@ -1,6 +1,7 @@
 class Organization < ApplicationRecord
   belongs_to :category
   belongs_to :user
+  has_many :orgcomments, dependent: :destroy
   ratyrate_rateable "speed", "engine", "price","overall_average"
 
   has_attached_file :image,
